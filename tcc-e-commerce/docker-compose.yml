@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    environment:
+      - SERVICES=s3 # Configura o LocalStack para emular o serviço S3
+      - DEBUG=1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    ports:
+      - "4566:4566"  # Porta para acessar os serviços emulados
+      - "4571:4571"
+    volumes:
+      - "./localstack-data:/var/lib/localstack"

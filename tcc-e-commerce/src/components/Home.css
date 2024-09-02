@@ -1,0 +1,65 @@
+/* Home.css */
+.home-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .navbar {
+    width: 200px; /* Largura da barra de navegação */
+    height: 100%; /* Altura total da tela */
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    flex-direction: column; /* Alinhar itens em coluna */
+    align-items: flex-start; /* Alinhar itens ao início (esquerda) */
+    padding: 10px;
+    position: fixed; /* Fixa a barra na esquerda */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+  }
+  
+  .hamburger-menu {
+    cursor: pointer;
+    font-size: 24px;
+    margin-bottom: 20px; /* Espaçamento abaixo do ícone de hambúrguer */
+  }
+  
+  .dropdown-menu {
+    width: 100%; /* Ocupa toda a largura da barra de navegação */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-height: 0; /* Inicialmente oculto */
+    transition: max-height 0.3s ease; /* Transição suave */
+  }
+  
+  .dropdown-menu.open {
+    max-height: 150px; /* Altura máxima ao abrir */
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .main-content {
+    margin-left: 220px; /* Espaço para a barra de navegação à esquerda */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px; /* Espaçamento ao redor do conteúdo principal */
+  }
+  

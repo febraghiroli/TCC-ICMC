@@ -1,0 +1,106 @@
+/* BuyProducts.css */
+.buy-products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima da página */
+  background-color: #f3f4f6; /* Fundo claro para contrastar com os cards */
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px; /* Maior espaçamento entre os itens */
+  margin: 30px 0; /* Espaçamento dinâmico entre a grade e os elementos */
+  flex-grow: 1; /* Faz com que o grid ocupe o espaço disponível */
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 12px; /* Bordas mais arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra mais intensa */
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+  cursor: pointer; /* Indica que o card é interativo */
+}
+
+.product-card:hover {
+  transform: translateY(-8px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra mais profunda ao passar o mouse */
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px; /* Bordas arredondadas para a imagem */
+  margin-bottom: 15px;
+  transition: transform 0.3s ease; /* Transição suave para a imagem */
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05); /* Aumenta ligeiramente a imagem ao passar o mouse */
+}
+
+.product-card h3 {
+  color: #333; /* Título em cor escura */
+  margin-bottom: 10px;
+  font-size: 1.2em; /* Tamanho de fonte maior */
+}
+
+.product-card p {
+  color: #007bff; /* Cor de destaque para o preço */
+  font-weight: bold; /* Texto em negrito */
+  margin-bottom: 0;
+  font-size: 1.1em; /* Tamanho de fonte para o preço */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto; /* Move a paginação para a parte inferior */
+  padding: 20px 0; /* Espaçamento para os botões */
+  background-color: #ffffff; /* Fundo branco para destacar */
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05); /* Sombra leve */
+  position: sticky; /* Fixa a paginação na parte inferior da visualização */
+  bottom: 0; /* Posiciona na parte inferior */
+  border-radius: 12px 12px 0 0; /* Bordas arredondadas na parte superior */
+}
+
+.pagination button {
+  padding: 10px 25px;
+  margin: 0 15px;
+  background-color: #007bff; /* Azul vibrante */
+  color: white;
+  border: none;
+  border-radius: 25px; /* Botões mais arredondados */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Transição suave para cor de fundo */
+}
+
+.pagination button:hover {
+  background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+}
+
+.pagination button:disabled {
+  background-color: #ccc; /* Cinza para botões desativados */
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+  font-size: 18px;
+  color: #333; /* Texto de paginação em cor escura */
+}
+
+h2 {
+  color: #007bff; /* Título principal em azul vibrante */
+  margin-bottom: 20px;
+  font-size: 2em; /* Tamanho do título */
+}
