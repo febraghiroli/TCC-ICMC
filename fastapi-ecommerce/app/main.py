@@ -1,9 +1,12 @@
 # app/main.py
-from fastapi import FastAPI, Depends, HTTPException, status, Query
+from fastapi import FastAPI, Depends, HTTPException, status, Query, Request
 from fastapi.middleware.cors import CORSMiddleware  # Importe o middleware de CORS
 from sqlalchemy.orm import Session
 from . import models, schemas, crud
 from .database import SessionLocal, engine
+import boto3
+import os
+import json
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -73,7 +76,36 @@ def get_products(
 
     # Estrutura de resposta com itens e total de páginas
     return {
-        "items": [item for item in items],
+        "items": [schemas.Item.from_orm(item) for item in items],
         "totalPages": total_pages
     }
 
+lambda_client = boto3.client(
+    'lambda',
+    endpoint_url=os.getenv('LOCALSTACK_URL', 'http://localhost:4566'),  # ou substitua pela URL da AWS se estiver em produção
+    region_name='us-east-1',
+    aws_access_key_id='test',
+    aws_secret_access_key='test'
+)
+
+@app.post("/generate-report")
+async def generate_report(request: Request):
+    body = await request.json()
+    email = body.get("email")
+
+    if not email:
+        raise HTTPException(status_code=400, detail="E-mail não fornecido.")
+
+    # Invocar a função Lambda passando o e-mail como argumento
+    try:
+        response = lambda_client.invoke(
+            FunctionName='MyLambdaFunction',
+            InvocationType='RequestResponse',
+            Payload=json.dumps({'email': email}),
+        )
+        response_payload = response['Payload'].read().decode('utf-8')
+        print(f'A response e: {response_payload}')
+        return {"message": json.loads(response_payload)}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=500, detail=f"Erro ao invocar a Lambda: {str(e)}")

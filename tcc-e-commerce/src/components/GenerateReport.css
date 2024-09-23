@@ -1,0 +1,60 @@
+.generate-report-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.generate-report-container h1 {
+  position: absolute;
+  top: 20px; /* Fixa o título no topo */
+  width: 100%;
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+}
+
+.generate-report-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.generate-report-container input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima do campo de input */
+  box-sizing: border-box;
+}
+
+.generate-report-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima do botão */
+}
+
+.generate-report-container button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  /* Ajustes para dispositivos menores */
+  .generate-report-container input,
+  .generate-report-container button {
+    max-width: 300px;
+  }
+}

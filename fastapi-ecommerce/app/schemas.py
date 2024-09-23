@@ -19,9 +19,16 @@ class Authenticate(BaseModel):
     password: str
 
 class Item(BaseModel):
-    user_email: str
+    # user_email: str
     description: str
     s3_url: str
     product_name: str
     product_type: str
     price: str
+
+    class Config:
+        from_attributes = True  # Substitui orm_mode no Pydantic v2
+        orm_mode = True
+
+class EmailRequest(BaseModel):
+    email: str

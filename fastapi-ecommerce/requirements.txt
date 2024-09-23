@@ -1,0 +1,9 @@
+fastapi==0.112.2
+fastapi-cli==0.0.5
+uvicorn
+sqlalchemy
+psycopg2-binary
+pydantic
+passlib
+boto3
+openpyxl

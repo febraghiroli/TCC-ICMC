@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Home from './components/Home';
 import SellProduct from './components/SellProduct';
 import BuyProducts from './components/BuyProducts'; // Importe o componente BuyProducts
+import GenerateReport from './components/GenerateReport'; // Importa o componente da nova rota
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/vender" element={<SellProduct />} />
             <Route path="/comprar" element={<BuyProducts />} /> {/* Nova rota para comprar produtos */}
+            <Route path="/gerar-relatorio" element={<GenerateReport />} />
           </Routes>
         </div>
       </Router>

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+    container_name: backend
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    networks:
+      - my_external_network
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/mydatabase
+      - LOCALSTACK_URL=http://localhost:4566  # Para o backend acessar o LocalStack
+  
+  db:
+    image: postgres:13
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: newuser  # Nome de usuário para o PostgreSQL
+      POSTGRES_PASSWORD: password  # Senha do usuário
+      POSTGRES_DB: tcc  # Nome do banco de dados
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - my_external_network
+  
+volumes:
+  pgdata:
+
+networks:
+  my_external_network:
+    external: true  # Especifica que a network é externa

@@ -4,13 +4,33 @@ services:
   localstack:
     image: localstack/localstack
     container_name: localstack
+    networks:
+      - my_external_network
     environment:
-      - SERVICES=s3 # Configura o LocalStack para emular o serviço S3
+      - SERVICES=lambda,s3 # Configura o LocalStack para emular o serviço S3
       - DEBUG=1
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
+      - LAMBDA_EXECUTOR=docker  # Certifique-se de que o executor Lambda é o Docker
     ports:
       - "4566:4566"  # Porta para acessar os serviços emulados
       - "4571:4571"
     volumes:
       - "./localstack-data:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"  # Acesso ao Docker socket
+  
+  # frontend:
+  #   build:
+  #     context: .
+  #   container_name: frontend
+  #   networks:
+  #     - my_external_network
+  #   ports:
+  #     - "3000:80"  # Porta para o frontend (React)
+  #   environment:
+  #     - REACT_APP_BACKEND_URL=http://localhost:8000  # URL do backend
+  #     - REACT_APP_LOCALSTACK_URL=http://localhost:4566  # URL do LocalStack
+
+networks:
+  my_external_network:
+    external: true  # Especifica que a network é externa
