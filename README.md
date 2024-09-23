@@ -13,11 +13,13 @@ AWS CLI, para poder interagir com o LOCALSTACK.
 
 ## Comandos Importantes
 
-Para inicializar o projeto FRONTEND, digitar no terminal: **npm start**
+Caso não queira utilizar DOCKER:
+- Para inicializar o projeto FRONTEND, digitar no terminal: **npm start** (sem docker)
+- Para inicializar o projeto BACKEND, digitar no terminal: **uvicorn app.main:app --reload** (sem docker)
 
-Para inicializar o projeto BACKEND, digitar no terminal: **uvicorn app.main:app --reload**
-
-No projeto de FRONTEND, há um DOCKER-COMPOSE.YML (para o localstack) . Digitar no terminal: **docker-compose up**
+Caso queira utilizar DOCKER:
+- No projeto de FRONTEND, há um DOCKER-COMPOSE.YML (para o localstack e frontend) . Digitar no terminal: **docker-compose up --build**
+- No projeto de BACKEND, há um DOCKER-COMPOSE.YML (para o backend e postgres) . Digitar no terminal: **docker-compose up --build**
 
 Após feito isso, digitar no terminal **aws configure**. Preencher com:
 test
@@ -25,12 +27,20 @@ test
 us-east-1
 json
 
+No projeto de BACKEND, rodar:
+**sh aws_init.sh**
+
 ## Avisos Importantes
 
-A aplicação ainda não está 100% dockerizada. 
 
 Esta aplicação usará, até então, localmente (com LocalStack):
 * EC2, para simular as máquinas utilizadas na nuvem.  
 * AWS S3, para guardar as imagens dos produtos.
 * AWS Lambda, para rodar rotinas assíncronas conforme um Schedule configurado.
-* RDS (se possível).
+
+Na nuvem (AWS), está planejado utilizar:
+* EC2 -> Onde ficará frontend e backend;
+* S3;
+* Lambda;
+* RDS;
+* Secret Manager;
