@@ -57,8 +57,8 @@ def upload_to_s3(bucket_name, file_path, s3_key):
     s3_client = boto3.client(
         's3',
         region_name='us-east-1',  # Região padrão para LocalStack
-        aws_access_key_id='AKIARWSMQNHCXGR4UZNL',  # Credenciais fictícias para o LocalStack
-        aws_secret_access_key='gWDeAEWheIriVXKKsQbWv6iHnOxZ5t5ph67zMKa2',
+        aws_access_key_id='',  # Credenciais fictícias para o LocalStack
+        aws_secret_access_key='',
     )
     
     # Faz o upload do arquivo para o bucket S3
