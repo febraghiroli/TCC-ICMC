@@ -19,17 +19,17 @@ services:
       - "./localstack-data:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"  # Acesso ao Docker socket
   
-  # frontend:
-  #   build:
-  #     context: .
-  #   container_name: frontend
-  #   networks:
-  #     - my_external_network
-  #   ports:
-  #     - "3000:80"  # Porta para o frontend (React)
-  #   environment:
-  #     - REACT_APP_BACKEND_URL=http://localhost:8000  # URL do backend
-  #     - REACT_APP_LOCALSTACK_URL=http://localhost:4566  # URL do LocalStack
+  frontend:
+    build:
+      context: .
+    container_name: frontend
+    networks:
+      - my_external_network
+    ports:
+      - "3000:80"  # Porta para o frontend (React)
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8000  # URL do backend
+      - REACT_APP_LOCALSTACK_URL=http://localhost:4566  # URL do LocalStack
 
 networks:
   my_external_network:
